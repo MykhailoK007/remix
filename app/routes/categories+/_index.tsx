@@ -11,9 +11,6 @@ import {AppButton} from '~/global/components/app-button';
 
 import {CategoriesTable} from './components/table';
 
-//
-//
-
 export const handle = {i18n: ['common', 'categories']};
 export const meta: MetaFunction = () => [{title: 'Remix App - Categories'}];
 
@@ -23,21 +20,15 @@ export const clientLoader = async () => {
   return null;
 };
 
-//
-//
-
 export default function Categories() {
   const {t} = useTranslation(['common']);
   const {data, isLoading} = useQueryCategoriesList();
-
-  //
-  //
 
   return (
     <>
       <Stack alignItems="flex-end" my={2}>
         <SkeletonOnLoading isLoading={isLoading}>
-          <AppButton to="/products/create" variant="contained">
+          <AppButton to="/categories/create" variant="contained">
             {t('common:create')}
           </AppButton>
         </SkeletonOnLoading>
