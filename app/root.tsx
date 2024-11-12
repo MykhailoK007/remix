@@ -6,6 +6,7 @@ import {
   useRouteError,
   isRouteErrorResponse,
 } from '@remix-run/react';
+import {useEffect, useState} from 'react';
 
 import {CircularProgress, Grid2, Typography} from '@mui/material';
 
@@ -14,16 +15,11 @@ import {MuiDocument} from '~/global/components/mui/document';
 
 import {Language} from '~/localization/resource';
 
-//
-//
-
 export const clientLoader = async ({params}: ClientLoaderFunctionArgs) => {
   const lang = (params?.lang as Language) || 'en';
 
   return {lang, dir: lang === 'ar' ? 'rtl' : 'ltr'};
 };
-
-// clientLoader.hydrate = true;
 
 export default function App() {
   const dehydratedState = useDehydratedState();
@@ -39,7 +35,6 @@ export default function App() {
   );
 }
 
-// https://remix.run/docs/en/main/route/error-boundary
 export function ErrorBoundary() {
   const error = useRouteError();
 
@@ -91,6 +86,11 @@ export function ErrorBoundary() {
 }
 
 export const HydrateFallback = () => {
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    setIsClient(typeof window !== 'undefined');
+  }, []);
+
   return (
     <MuiDocument>
       <Grid2
@@ -101,10 +101,14 @@ export const HydrateFallback = () => {
         alignItems="center"
         direction="column"
       >
-        <CircularProgress color="secondary" size="2rem" />
-        <Typography variant="subtitle2" fontSize="1rem">
-          Loading...
-        </Typography>
+        {isClient && (
+          <>
+            <CircularProgress color="secondary" size="2rem" />
+            <Typography variant="subtitle2" fontSize="1rem">
+              Loading...
+            </Typography>
+          </>
+        )}
       </Grid2>
     </MuiDocument>
   );
