@@ -14,16 +14,11 @@ import {MuiDocument} from '~/global/components/mui/document';
 
 import {Language} from '~/localization/resource';
 
-//
-//
-
 export const clientLoader = async ({params}: ClientLoaderFunctionArgs) => {
   const lang = (params?.lang as Language) || 'en';
 
   return {lang, dir: lang === 'ar' ? 'rtl' : 'ltr'};
 };
-
-// clientLoader.hydrate = true;
 
 export default function App() {
   const dehydratedState = useDehydratedState();
@@ -39,7 +34,6 @@ export default function App() {
   );
 }
 
-// https://remix.run/docs/en/main/route/error-boundary
 export function ErrorBoundary() {
   const error = useRouteError();
 

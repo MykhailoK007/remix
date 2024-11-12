@@ -3,9 +3,6 @@ import {join} from 'path';
 import {glob} from 'glob';
 import {ensureRootRouteExists, getRouteIds, getRouteManifest} from 'remix-custom-routes';
 
-//
-//
-
 export const routes = async () => {
   const appDir = join(process.cwd(), 'app');
 

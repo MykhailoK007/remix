@@ -7,28 +7,20 @@ import i18n from '~/localization/i18n'; // your i18n configuration file
 
 import {getSupportedLanguageFromRequest} from './resource';
 
-//
-//
-
 const i18next = new RemixI18Next({
   detection: {
-    supportedLanguages: i18n.supportedLngs as any,
-    fallbackLanguage: i18n.fallbackLng as any,
-    findLocale: async request => {
+    supportedLanguages: i18n.supportedLngs as string[],
+    fallbackLanguage: i18n.fallbackLng as string,
+    findLocale: async (request: Request): Promise<string> => {
       return getSupportedLanguageFromRequest(request) as string;
     },
   },
-  // This is the configuration for i18next used
-  // when translating messages server-side only
   i18next: {
     ...i18n,
     backend: {
       loadPath: resolve('./public/locales/{{lng}}/{{ns}}.json'),
     },
   },
-  // The i18next plugins you want RemixI18next to use for `i18n.getFixedT` inside loaders and actions.
-  // E.g. The Backend plugin for loading translations from the file system
-  // Tip: You could pass `resources` to the `i18next` configuration and avoid a backend here
   plugins: [Backend],
 });
 
