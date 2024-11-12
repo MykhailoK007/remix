@@ -1,5 +1,5 @@
-import en from '~/../public/locales/en';
-import ar from '~/../public/locales/ar';
+import en from '~/../public/locales/en?url';
+import ar from '~/../public/locales/ar?url';
 
 const languages = ['en', 'ar'] as const;
 
