@@ -7,5 +7,10 @@
 	"category": "القسم",
 	"quantity": "الكمية",
 	"price": "السعر",
-	"priceSale": "التخفيض"
+	"priceSale": "التخفيض",
+	"updated": "تم التحديث",
+	"created": "مخلوق",
+	"active": "نشيط",
+	"inactive": "غير نشط",
+	"status" :"حالة"
 }

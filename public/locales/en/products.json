@@ -7,5 +7,10 @@
 	"category": "Category",
 	"quantity": "Quantity",
 	"price": "Price",
-	"priceSale": "Sale Price"
+	"priceSale": "Sale Price",
+	"updated": "Updated",
+	"created": "Created",
+	"active": "Active",
+	"inactive": "Inactive",
+	"status" :"Status"
 }
